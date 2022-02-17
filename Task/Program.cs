@@ -22,6 +22,7 @@ namespace Task
         int count=0;
         int user_choice, Account_Type, no_of_customer;
         Customer cus1 = new Customer();
+        List<Customer> customerList = new List<Customer>();
         public void DisplayCustomerDetails()
         {
             Employee emp = new Employee()
@@ -53,12 +54,19 @@ namespace Task
                 Gender = "Male",
                 salary = 48000
             };
-
+            Employee emp4 = new Employee()
+            {
+                id = 105,
+                name = "Sangeetha",
+                Gender = "Female",
+                salary = 45000
+            };
             List<Employee> employeeList = new List<Employee>();
             employeeList.Add(emp);
             employeeList.Add(emp1);
             employeeList.Add(emp2);
             employeeList.Add(emp3);
+            employeeList.Add(emp4);
             Console.Write("List of Employees are displayed below\n");
             foreach (Employee employees in employeeList)
             {
@@ -84,6 +92,7 @@ namespace Task
                     Balance = Balance + Acc_Amount;
                     Console.WriteLine("The amount is deposited");
                     Console.Write("The amount deposited is : " + Balance);
+                    Console.Write("\n******************************************");
                 }
                 Console.WriteLine("\nIf you need ATM Card!!! Press\n 1. To WithDraw \n 2. To skip this step");
                 choice = Console.ReadLine();
@@ -161,9 +170,10 @@ namespace Task
                 }
                 else
                 {
-                    this.Balance = Balance + Acc_Amount;
+                    Balance = Balance + Acc_Amount;
                     Console.WriteLine("The amount is deposited");
-                    Console.Write("The amount deposited is : " + this.Balance);
+                    Console.Write("The amount deposited is : " + Balance);
+                    Console.Write("\n******************************************");
                 }
                 Console.WriteLine("\nIf you need ATM Card!!! Press\n 1. To Activate \n 2. To skip this step");
                 choice = Console.ReadLine();
@@ -244,6 +254,7 @@ namespace Task
                     Balance = Balance + Acc_Amount;
                     Console.WriteLine("The amount is deposited");
                     Console.Write("The amount deposited is : " + Balance);
+                    Console.Write("\n******************************************");
                 }
                 Console.WriteLine("\nIf you need ATM Card!!! Press\n 1. To Activate \n 2. To skip this step");
                 choice = Console.ReadLine();
@@ -349,19 +360,31 @@ namespace Task
                 }
                 cus1.Balance = Balance;
                 sw.WriteLine(cus1.Balance);
-                List<Customer> customerList = new List<Customer>();
                 customerList.Add(cus1);
                 foreach (Customer customer in customerList)
                 {
+                    Console.Write("\n------------------------------------------\n");
                     Console.Write("List of Customer are displayed below\n");
+                    Console.Write("------------------------------------------\n");
                     Console.WriteLine("Acc_name || Acc_Number || Address || Account_Type || Balance");
-                    Console.WriteLine("{0}      || {1}        || {2}     || {3}  || {4}", customer.Acc_name, customer.Acc_Number, customer.Address, customer.Account_Type, customer.Balance);
+                    Console.Write("\n------------------------------------------\n");
+                    Console.WriteLine("{0}      || {1}      || {2}     || {3}  || {4}", customer.Acc_name, customer.Acc_Number, customer.Address, customer.Account_Type, customer.Balance);
                 }
-                sw.Flush();
-                sw.Close();
             }
+            Console.Write("\n************************************\n");
+            Console.Write("Displaying all Customers below\n");
+            Console.Write("List of all Customer are displayed below\n");
+            Console.Write("------------------------------------------\n");
+            Console.WriteLine("Acc_name || Acc_Number || Address || Account_Type || Balance");
+            Console.Write("\n------------------------------------------\n");
+            foreach (Customer customer in customerList)
+            {
+                Console.WriteLine("{0}      || {1}     || {2}     || {3}  || {4}", customer.Acc_name, customer.Acc_Number, customer.Address, customer.Account_Type, customer.Balance);
+            }
+            sw.Flush();
+            sw.Close();
         }
-        public class Employee
+    public class Employee
         {
             public int id
             {
@@ -413,7 +436,6 @@ namespace Task
         {
             public static void Main(String[] args)
             {
-                int choice_selected;
                 String ch;
                 Bank bank = new Bank();
                 AccountDeposit accDep = new AccountDeposit(bank.Savings_Account);
@@ -422,7 +444,7 @@ namespace Task
                     Console.WriteLine("\n******************");
                     Console.WriteLine("Welcome to Bank Application");
                     Console.WriteLine("********************");
-                    Console.WriteLine("Enter any one number to proceed further : \n 1. Savings Account\n 2. Current Account\n 3. ChildCare Account\n 4. Display Employee List(Static)\n 5. Create Account(Dynamic)\n 6. Exit");
+                    Console.WriteLine("Enter any one number to proceed further : \n 1. Savings Account\n 2. Current Account\n 3. ChildCare Account\n 4. Display Employee List\n 5. Create Account\n 6. Exit");
                     Console.WriteLine("******************");
                     ch = Console.ReadLine();
 
