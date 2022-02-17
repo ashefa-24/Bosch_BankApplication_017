@@ -17,9 +17,10 @@ namespace Task
         string Acc_name, Address;
         int Acc_Amount, Acc_Number,am_wd;
         string choice;
-        double Balance = 500;
+        int Balance = 500;
         int count=0;
         int user_choice, Account_Type, no_of_customer;
+        Customer cus1 = new Customer();
         public void DisplayCustomerDetails()
         {
             Employee emp = new Employee()
@@ -71,9 +72,9 @@ namespace Task
                 }
                 else
                 {
-                    this.Balance = Balance + Acc_Amount;
+                    Balance = Balance + Acc_Amount;
                     Console.WriteLine("The amount is deposited");
-                    Console.Write("The amount deposited is : " + this.Balance);
+                    Console.Write("The amount deposited is : " + Balance);
                 }
                 Console.WriteLine("\nIf you need ATM Card!!! Press\n 1. To WithDraw \n 2. To skip this step");
                 choice = Console.ReadLine();
@@ -86,18 +87,18 @@ namespace Task
                             Console.WriteLine("ATM Card WithDrawl is Processing");
                             Console.Write("Enter the amount to be withdrawl:\n");
                             am_wd = int.Parse(Console.ReadLine());
-                            if (this.Balance == 0)
+                            if (Balance == 0)
                             {
                                 Console.WriteLine("Insufficient balance");
                             }
-                            else if (am_wd > this.Balance)
+                            else if (am_wd > Balance)
                             {
                                 Console.WriteLine("Insufficient Balance");
                             }
                             else
                             {
-                                this.Balance = this.Balance - am_wd;
-                                Console.Write("Balance: " + this.Balance);
+                                Balance = Balance - am_wd;
+                                Console.Write("Balance: " + Balance);
                             }
                             Console.Write("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
                             Console.WriteLine("\nDo you want to continue?");
@@ -107,8 +108,8 @@ namespace Task
                             count++;
                             if(count == 3)
                             {
-                               this.Balance = this.Balance - 500;
-                               Console.Write("Current Balance is: " + this.Balance);
+                               Balance = Balance - 500;
+                               Console.Write("Current Balance is: " + Balance);
                                Console.WriteLine("\nAs you have exceeded the limit we have debited Rs-500/ from your account");
                                Console.WriteLine("\nYou have exceeded the limit please wait for next 24 hours");
                             }
@@ -151,8 +152,9 @@ namespace Task
                 }
                 else
                 {
+                    this.Balance = Balance + Acc_Amount;
                     Console.WriteLine("The amount is deposited");
-                    Console.Write("The amount deposited is : " + Acc_Amount);
+                    Console.Write("The amount deposited is : " + this.Balance);
                 }
                 Console.WriteLine("\nIf you need ATM Card!!! Press\n 1. To Activate \n 2. To skip this step");
                 choice = Console.ReadLine();
@@ -165,18 +167,18 @@ namespace Task
                             Console.WriteLine("ATM Card WithDrawl is Processing");
                             Console.Write("Enter the amount to be withdrawl:\n");
                             am_wd = int.Parse(Console.ReadLine());
-                            if (this.Balance == 0)
+                            if (Balance == 0)
                             {
                                 Console.WriteLine("Insufficient balance");
                             }
-                            else if (am_wd > this.Balance)
+                            else if (am_wd > Balance)
                             {
                                 Console.WriteLine("Insufficient Balance");
                             }
                             else
                             {
-                                this.Balance = this.Balance - am_wd;
-                                Console.Write("Balance: " + this.Balance);
+                                Balance = Balance - am_wd;
+                                Console.Write("Balance: " + Balance);
                             }
                             Console.Write("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
                             Console.WriteLine("\nDo you want to continue?");
@@ -186,8 +188,8 @@ namespace Task
                             count++;
                             if (count == 3)
                             {
-                                this.Balance = this.Balance - 500;
-                                Console.Write("Current Balance is: " + this.Balance);
+                                Balance = Balance - 500;
+                                Console.Write("Current Balance is: " + Balance);
                                 Console.WriteLine("\nAs you have exceeded the limit we have debited Rs-500/ from your account");
                                 Console.WriteLine("\nYou have exceeded the limit please wait for next 24 hours");
                             }
@@ -226,12 +228,13 @@ namespace Task
                 Acc_Amount = int.Parse(Console.ReadLine());
                 if (Acc_Amount > 500000)
                 {
-                    throw (new Error("Please Check the amount you have entered\n"));
+                    throw (new Error("Please Check the amount you have entered"));
                 }
                 else
                 {
-                    Console.WriteLine("The amount is deposited\n");
-                    Console.Write("The amount deposited is : " + Acc_Amount);
+                    Balance = Balance + Acc_Amount;
+                    Console.WriteLine("The amount is deposited");
+                    Console.Write("The amount deposited is : " + Balance);
                 }
                 Console.WriteLine("\nIf you need ATM Card!!! Press\n 1. To Activate \n 2. To skip this step");
                 choice = Console.ReadLine();
@@ -244,18 +247,18 @@ namespace Task
                             Console.WriteLine("ATM Card WithDrawl is Processing");
                             Console.Write("Enter the amount to be withdrawl:\n");
                             am_wd = int.Parse(Console.ReadLine());
-                            if (this.Balance == 0)
+                            if (Balance == 0)
                             {
                                 Console.WriteLine("Insufficient balance");
                             }
-                            else if (am_wd > this.Balance)
+                            else if (am_wd > Balance)
                             {
                                 Console.WriteLine("Insufficient Balance");
                             }
                             else
                             {
-                                this.Balance = this.Balance - am_wd;
-                                Console.Write("Balance: " + this.Balance);
+                                Balance = Balance - am_wd;
+                                Console.Write("Balance: " + Balance);
                             }
                             Console.Write("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
                             Console.WriteLine("\nDo you want to continue?");
@@ -265,8 +268,8 @@ namespace Task
                             count++;
                             if (count == 3)
                             {
-                                this.Balance = this.Balance - 500;
-                                Console.Write("Current Balance is: " + this.Balance);
+                                Balance = Balance - 500;
+                                Console.Write("Current Balance is: " + Balance);
                                 Console.WriteLine("\nAs you have exceeded the limit we have debited Rs-500/ from your account");
                                 Console.WriteLine("\nYou have exceeded the limit please wait for next 24 hours");
                             }
@@ -329,21 +332,18 @@ namespace Task
                 {
                     ChildCare_Account();
                 }
+                cus1.Balance = Balance;
                 List<Customer> customerList = new List<Customer>();
                 customerList.Add(cus1);
                 foreach (Customer customer in customerList)
                 {
                     Console.Write("List of Customer are displayed below\n");
-                    Console.WriteLine("Acc_name || Acc_Number || Address || Account_Type");
-                    Console.WriteLine("{0}      || {1}        || {2}     || {3}", customer.Acc_name, customer.Acc_Number, customer.Address, customer.Account_Type);
+                    Console.WriteLine("Acc_name || Acc_Number || Address || Account_Type || Balance");
+                    Console.WriteLine("{0}      || {1}        || {2}     || {3}  || {4}", customer.Acc_name, customer.Acc_Number, customer.Address, customer.Account_Type, customer.Balance);
                 }
             }
             
 
-        }
-        public void DisplayCustomer()
-        {
-            
         }
         public class Employee
         {
@@ -388,7 +388,7 @@ namespace Task
                 get;
                 set;
             }
-            public double Balance
+            public int Balance
             {
                 get;set;
             }
@@ -406,7 +406,7 @@ namespace Task
                     Console.WriteLine("\n******************");
                     Console.WriteLine("Welcome to Bank Application");
                     Console.WriteLine("********************");
-                    Console.WriteLine("Enter any one number to proceed further : \n 1. Savings Account\n 2. Current Account\n 3. ChildCare Account\n 4. Display Employee List\n 5. Create Account\n 6. Exit");
+                    Console.WriteLine("Enter any one number to proceed further : \n 1. Savings Account\n 2. Current Account\n 3. ChildCare Account\n 4. Display Employee List(Static)\n 5. Create Account(Dynamic)\n 6. Exit");
                     Console.WriteLine("******************");
                     ch = Console.ReadLine();
 
