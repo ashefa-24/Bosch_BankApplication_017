@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Task
 {
@@ -306,6 +307,7 @@ namespace Task
         }
         public void CreateAccount()
         {
+            StreamWriter sw = new StreamWriter("D:\\Employee.txt");
             Console.Write("**Hello!!Welcome to bank application**\n");
             Console.Write("Please Enter the number of customer you want to add\n");
             no_of_customer = int.Parse(Console.ReadLine());
@@ -315,18 +317,22 @@ namespace Task
                 Console.Write("\nEnter the Account Holder Name:\n");
                 Acc_name = Console.ReadLine();
                 cus1.Acc_name = Acc_name;
+                sw.WriteLine(cus1.Acc_name);
                 Console.WriteLine("Enter Account Number");
                 Console.Write("Enter the Last Four Digit of ur account number: \n");
                 Acc_Number = int.Parse(Console.ReadLine());
                 cus1.Acc_Number = Acc_Number;
+                sw.WriteLine(cus1.Acc_Number);
                 Console.Write("Enter the Address:\n");
                 Address = Console.ReadLine();
                 cus1.Address = Address;
+                sw.WriteLine(cus1.Address);
                 Console.Write("Enter the account type\n");
                 Console.Write("Press 1. For Savings\n 2. For Current\n 3. For ChildCare\n");
                 Console.Write("~~~~~~~~~~~~~~~~~~\n");
                 Account_Type = int.Parse(Console.ReadLine());
                 cus1.Account_Type = Account_Type;
+                sw.WriteLine(cus1.Account_Type);
                 Console.Write("\nThe Option you have selected: " + Account_Type);
                 cus1.Balance = 0;
                 if (Account_Type == 1)
@@ -342,6 +348,7 @@ namespace Task
                     ChildCare_Account();
                 }
                 cus1.Balance = Balance;
+                sw.WriteLine(cus1.Balance);
                 List<Customer> customerList = new List<Customer>();
                 customerList.Add(cus1);
                 foreach (Customer customer in customerList)
@@ -350,9 +357,9 @@ namespace Task
                     Console.WriteLine("Acc_name || Acc_Number || Address || Account_Type || Balance");
                     Console.WriteLine("{0}      || {1}        || {2}     || {3}  || {4}", customer.Acc_name, customer.Acc_Number, customer.Address, customer.Account_Type, customer.Balance);
                 }
+                sw.Flush();
+                sw.Close();
             }
-            
-
         }
         public class Employee
         {
