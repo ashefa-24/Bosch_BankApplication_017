@@ -26,33 +26,41 @@ namespace Task
             Employee emp = new Employee()
             {
                 id = 101,
-                name = "anas",
-                Gender = "male",
-                salary = 20000
+                name = "Ashefa",
+                Gender = "Female",
+                salary = 50000
             };
             Employee emp1 = new Employee()
             {
                 id = 102,
-                name = "deepti",
-                Gender = "Female",
-                salary = 20500
+                name = "Shidharth",
+                Gender = "Male",
+                salary = 50500
 
             };
             Employee emp2 = new Employee()
             {
                 id = 103,
-                name = "deepa",
+                name = "Afridha",
                 Gender = "Female",
-                salary = 20333
+                salary = 45000
+            };
+            Employee emp3 = new Employee()
+            {
+                id = 104,
+                name = "Suriya",
+                Gender = "Male",
+                salary = 48000
             };
 
             List<Employee> employeeList = new List<Employee>();
             employeeList.Add(emp);
             employeeList.Add(emp1);
             employeeList.Add(emp2);
+            employeeList.Add(emp3);
+            Console.Write("List of Employees are displayed below\n");
             foreach (Employee employees in employeeList)
             {
-                Console.Write("List of Employees are displayed below\n");
                 Console.WriteLine("id={0} || name={1} || gender={2} || Salary={3}", employees.id, employees.name, employees.Gender, employees.salary);
             }
         }
@@ -320,7 +328,8 @@ namespace Task
                 Account_Type = int.Parse(Console.ReadLine());
                 cus1.Account_Type = Account_Type;
                 Console.Write("\nThe Option you have selected: " + Account_Type);
-                if(Account_Type == 1)
+                cus1.Balance = 0;
+                if (Account_Type == 1)
                 {
                     Savings_Account();
                 }
